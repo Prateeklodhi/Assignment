@@ -1,0 +1,198 @@
+
+---
+
+# 📦 Parcel Management System
+
+A task given to Prateek kumar lodhi.
+
+## 📑 Features
+
+- **User Registration & Login**: Users can sign up and log in with a secure authentication system.
+- **Role-based Access Control**:
+  - **Admins**: Can add, update, and bulk upload parcels.
+  - **Regular Users**: Can view the status of parcels and update it.
+- **Real-time Updates**: Users get real-time updates when parcels are added or updated using **Socket.IO**.
+- **Bulk Upload**: Upload parcels using CSV files for faster data entry.
+- **Parcel Tracking**: Track parcels from creation to delivery, with statuses like `received`, `in-transit`, `delivered`, and `canceled`.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Backend**: Python (Flask), Flask-SQLAlchemy (ORM), Flask-SocketIO (Real-time communication)
+- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap 5
+- **Database**: SQLite
+- **Libraries**: 
+  - **Pandas**: For handling bulk CSV uploads.
+  - **Flask-CORS**: To manage cross-origin requests.
+  - **JWT (JSON Web Tokens)**: For secure user authentication.
+  
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Python 3.8 or above**
+- **Flask** and other dependencies listed in `requirements.txt`
+- **SQLite** or **MongoDB** (you can configure either for the database)
+- **HMTL and javascipt** (for Socket.IO)
+  
+### Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/parcel-management-system.git
+    cd parcel-management-system
+    ```
+
+2. **Set up a virtual environment**:
+    ```bash
+    python -m venv env
+    source env/bin/activate  # On Windows: .\env\Scripts\activate
+    ```
+
+3. **Install the dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Set up your environment variables** (create a `.env` file):
+    ```env
+    FLASK_ENV=development
+    SECRET_KEY=your_secret_key
+    SQLALCHEMY_DATABASE_URI=mysql+pymysql://username:password@localhost/parcel_management
+    ```
+
+5. **Set up the sqlite database**:
+    ```bash
+    flask db init
+    flask db migrate
+    flask db upgrade
+    ```
+
+6. **Run the Flask application**:
+    ```bash
+    flask run or python run.py
+    ```
+
+7. **Access the app** at `http://127.0.0.1:5000`.
+
+---
+
+## 💻 Features & Functionality
+
+### User Registration
+
+New users can register by filling in their username, password, and selecting a role (`user` or `admin`). Registration can be done on the `/register` page. Admins are automatically granted more privileges.
+
+### User Login & Role-Based Access Control
+
+Users can log in on the `/login` page. After logging in:
+- **Admins**: Gain access to admin functionalities such as adding, updating, and bulk uploading parcels.
+- **Users**: Can view parcel statuses and update deliveries.
+
+### Admin Dashboard
+
+Admins can access the **Sneat Admin Dashboard** to manage users, parcels, and system data.
+
+1. **Overview Section**:
+    - View **total parcels**, **delivered parcels**, and **pending parcels** at a glance.
+
+2. **Parcel Management**:
+    - Add new parcels using the **Add Parcel** form.
+    - **Update parcel status** (e.g., `received`, `in-transit`, `delivered`, or `canceled`).
+3. **Bulk Upload**:
+    - Admins can upload large numbers of parcels using CSV files. A sample CSV file is provided in the `data/` folder (`parcels.csv`).
+
+### Bulk Upload CSV Example
+
+**Sample CSV File:**
+```csv
+sender_name,receiver_name,status
+John Doe,Jane Smith,received
+Alice Johnson,Bob Brown,in-transit
+Charlie Daniels,Eve White,delivered
+```
+
+### Real-time Updates
+
+The system uses **Socket.IO** to notify users in real-time about updates such as:
+- When a new parcel is added.
+- When a parcel's status is updated.
+
+---
+
+## 🛠 API Endpoints
+
+### Authentication
+
+- **POST** `/login`: User login (returns JWT token).
+- **POST** `/register`: User registration.
+
+### Parcel Management
+
+- **GET** `/parcels`: Get all parcels (Admin only).
+- **POST** `/parcels`: Add a new parcel (Admin only).
+- **PUT** `/parcels/<id>`: Update a parcel’s status (Admin only).
+- **POST** `/parcels/bulk`: Bulk upload parcels using a CSV file (Admin only).
+
+### Admin
+
+- **GET** `/check-admin`: Check if the current user is an admin.
+  
+---
+
+## 🔐 Authentication & Security
+
+- **JWT Authentication**: All protected routes require users to be logged in using JWT tokens. Only admins can perform certain actions such as adding parcels, updating statuses, and uploading in bulk.
+
+
+---
+
+## 🔧 Development
+
+### Running the Application
+
+1. **Local Development**: 
+    - Run the Flask development server: `flask run`.
+    - The app will be accessible at `http://127.0.0.1:5000`.
+    
+2. **Running with Socket.IO**:
+    - To enable real-time updates via Socket.IO, you need to run the Flask app using `socketio.run()`.
+    ```bash
+    python run.py
+    ```
+
+### Deploying to Production
+
+To deploy to production, you can use platforms like:
+- **AWS EC2**
+- **Heroku**
+- **DigitalOcean**
+  
+For deployment, ensure you're using a production server such as **Gunicorn** with `socketio`.
+
+---
+
+## 👥 Contributing
+
+Contributions are welcome! Please open an issue or create a pull request if you’d like to contribute to the project.
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🏆 Acknowledgments
+
+- **Flask** for being an awesome lightweight web framework.
+- **Pandas** for simplifying bulk upload operations.
+
+---
+
+Feel free to adjust this README file to include any additional features or customization specific to your project!
+
