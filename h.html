@@ -1,0 +1,33 @@
+
+	<!-- Admin Section: Update Parcel Status -->
+				<div id="update-parcel-section" class="mt-4" style="display: none">
+					<h3>Update Parcel Status</h3>
+					<form id="update-parcel-form">
+						<div class="mb-3">
+							<label for="update-parcel-id" class="form-label">Parcel ID</label>
+							<input type="text" class="form-control" id="update-parcel-id" required />
+						</div>
+						<div class="mb-3">
+							<label for="update-parcel-status" class="form-label">New Status</label>
+							<select class="form-control" id="update-parcel-status" required>
+								<option value="received">Received</option>
+								<option value="in-transit">In Transit</option>
+								<option value="delivered">Delivered</option>
+								<option value="canceled">Canceled</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-warning">Update Status</button>
+					</form>
+				</div>
+
+				<!-- Admin Section: Bulk Upload -->
+				<div id="bulk-upload-section" class="mt-4" style="display: none">
+					<h3>Bulk Upload Parcels</h3>
+					<form id="bulk-upload-form">
+						<div class="mb-3">
+							<label for="bulk-upload-file" class="form-label">Upload CSV</label>
+							<input type="file" class="form-control" id="bulk-upload-file" accept=".csv" required />
+						</div>
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</form>
+				</div>

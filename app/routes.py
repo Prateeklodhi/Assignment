@@ -13,10 +13,6 @@ main = Blueprint('main', __name__)
 def index_page():
     return "Welcome to delivery system webapp."
 
-@main.route('/api/v1',methods = ['GET'])
-def apis():
-    return jsonify(url_routes),200
-
 #? =====================<Get all parcels >=============================
 # Routes for parcel
 @main.route('/parcels', methods=['GET'])
